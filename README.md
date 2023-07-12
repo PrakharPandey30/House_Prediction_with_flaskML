@@ -4,7 +4,9 @@ The "house-price-prediction-advanced-regression" repository contains code and re
 
 # ***Website Layout***
 
-![click here for demo](http://ec2-13-53-76-39.eu-north-1.compute.amazonaws.com:9090/)
+
+
+<a href='http://ec2-13-53-76-39.eu-north-1.compute.amazonaws.com:9090/' target='_blank'>click here for demo</a>
 
 ![image](demo.png)
 
