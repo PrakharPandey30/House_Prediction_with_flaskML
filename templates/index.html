@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>House Price Predictor Page </title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #252525;
+            color: white;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            width: 45%;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .form-row {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            gap:4px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #bada55;
+            color: black;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var input1 = document.getElementById("input1")a.value;
+            var input2 = document.getElementById("input2").value;
+            var input3 = document.getElementById("input3").value;
+            var input4 = document.getElementById("input4").value;
+            var input5 = document.getElementById("input5").value;
+            var input6 = document.getElementById("input6").value;
+            var input7 = document.getElementById("input7").value;
+            var input8 = document.getElementById("input8").value;
+            var input9 = document.getElementById("input9").value;
+            var input10 = document.getElementById("input10").value;
+
+            if (input1 === "" || input2 === "" || input3 === "" || input4 === "" || input5 === "" || input6 === "" || input7 === "" || input8 === "" || input9 === "" || input10 === "") {
+                alert("Please fill in all the fields.");
+                return false;
+            }
+
+            if (isNaN(Number(input1)) || isNaN(Number(input2)) || isNaN(Number(input3)) || isNaN(Number(input4)) || isNaN(Number(input5)) || isNaN(Number(input6)) || isNaN(Number(input7)) || isNaN(Number(input8)) || isNaN(Number(input9)) || isNaN(Number(input10))) {
+                alert("Please enter numeric values only.");
+                return false;
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>House Price Predictor</h1>
+    <form method="post" action="/predict" onsubmit="return validateForm()">
+        <div class="form-row">
+            <label for="input1"><b>Bedrooms</b></label>
+            <input type="text" id="input1" placeholder="Number of bedrooms" name="bedrooms">
+        </div>
+
+        <div class="form-row">
+            <label for="input2"><b>Bathrooms</b></label>
+            <input type="text" id="input2" placeholder="Number of bathrooms" name="bathrooms">
+        </div>
+
+        <div class="form-row">
+            <label for="input3"><b>Area of Living Room</b></label>
+            <input type="text" id="input3" placeholder="Area of Living Room in Sq. feet" name="sqft_living">
+        </div>
+
+        <div class="form-row">
+            <label for="input4"><b>Area of Lot</b></label>
+            <input type="text" id="input4" placeholder="Area of Lot in Sq. feet" name="sqft_lot">
+        </div>
+
+        <div class="form-row">
+            <label for="input5"><b>Floors</b></label>
+            <input type="text" id="input5" placeholder="Number of floors" name="floors">
+        </div>
+
+        <div class="form-row">
+            <label for="input6"><b>Waterfront</b></label>
+            <input type="text" id="input6" placeholder="Number of waterfront" name="waterfront">
+        </div>
+
+        <div class="form-row">
+            <label for="input7"><b>Area of house Apart Basement</b></label>
+            <input type="text" id="input7" placeholder="Apart from basement Sq feet of house" name="sqft_above">
+        </div>
+
+        <div class="form-row">
+            <label for="input8"><b>Area of basement</b></label>
+            <input type="text" id="input8" placeholder="Area of basement in Sq. feet" name="sqft_basement">
+        </div>
+
+        <div class="form-row">
+            <label for="input9"><b>Built Year</b></label>
+            <input type="text" id="input9" placeholder="Built Year of house. e.g, 1955" name="yr_built">
+        </div>
+
+        <div class="form-row">
+            <label for="input10"><b>Renovation Year</b></label>
+            <input type="text" id="input10" placeholder="If not then type 0." name="yr_renovated">
+        </div>
+
+        <input type="submit" value="Submit">
+        <div>
+            <a href="/"><b>Reset</b></a>
+        </div>
+
+        {% if result %}
+        <p class="prediction">
+            Predicted Price is: {{ result }}
+        </p>
+        {% endif %}
+    </form>
+</body>
+
+</html>
